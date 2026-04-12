@@ -59,6 +59,14 @@ MVCC依赖于三个隐式字段，undo log日志，readview
 
 redo log 在事务执行中，数据修改时实时生成。事务提交时redo log进行刷盘。保证已提交事务不会丢失
 
+MySQL 重启后会执行：
+👉 crash recovery（崩溃恢复）
+流程：
+扫描 redo log
+找到已提交但未刷盘的数据页修改
+重新执行这些修改（redo）
+恢复数据一致性
+
 undo log回滚日志 在数据修改之前生成。用于事务回滚和MVCC
 
 redo 保证持久性，undo 保证原子性 + 隔离性
