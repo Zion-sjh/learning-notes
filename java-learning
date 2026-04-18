@@ -12,3 +12,54 @@ new Child()
 执行 Parent()
   ↓
 再执行 Child()
+
+
+如果父类没有无参构造函数
+class Child extends Parent {
+    public Child() {
+        // 编译报错！
+    }
+}
+除非
+class Child extends Parent {
+    public Child() {
+        super("Tom");
+    }
+}
+
+
+super 和 this 不能同时出现
+原因：
+this()：调用本类构造
+super()：调用父类构造
+
+👉 它们都必须是第一行
+
+👉 所以只能存在一个
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
