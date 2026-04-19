@@ -38,12 +38,12 @@ super()：调用父类构造
 👉 所以只能存在一个
 
 
+##char类型在Java中是一个16位的Unicode字符类型,表示范围是从0到65535(十六进制为0x0000到0xFFFF)
 
 
-
-
-
-
+##抽象类可以实现（implements）接口，接口不能继承（extends）抽象类
+抽象类可以拥有构造方法，接口不能拥有构造方法
+接口中的方法默认都是public abstract的，而抽象类中的方法可以有不同的访问修饰符，包括public、protected和默认访问级别（default）
 
 
 
