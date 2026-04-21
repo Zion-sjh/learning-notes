@@ -1,0 +1,135 @@
+1️⃣ 第一层：后端基础核心（必须打穿）
+
+这是所有后端岗位的地基，不管你做不做AI。
+
+✔ Java（重点中的重点）
+
+你要重点掌握：
+
+① 面向对象 + 设计基础
+封装 / 继承 / 多态（不是背概念，要会用）
+接口 vs 抽象类
+常见设计原则：SOLID（至少理解单一职责）
+② 集合框架（高频面试）
+HashMap（底层：数组 + 链表/红黑树）
+ConcurrentHashMap（并发扩容机制）
+ArrayList vs LinkedList
+③ JVM（后面面试核心）
+内存结构（堆 / 栈 / 方法区）
+垃圾回收（GC算法：标记清除/复制/分代）
+类加载机制
+④ 并发编程（非常重要）
+synchronized / ReentrantLock
+volatile
+线程池（必须会配置）
+CAS + AQS（进阶加分）
+2️⃣ 第二层：数据库体系（MySQL核心能力）
+
+你已经学了一部分，这一层要往“工程级理解”走。
+
+✔ 必须掌握
+① 索引系统（重点）
+B+树结构
+聚簇索引 vs 二级索引
+回表
+覆盖索引
+② 事务
+ACID
+隔离级别（重点：RR vs RC）
+MVCC（必须吃透）
+③ 锁机制（面试高频）
+行锁 / 表锁
+临键锁 / 间隙锁
+死锁分析
+④ SQL优化
+explain
+慢查询
+索引失效场景
+3️⃣ 第三层：后端框架（Spring全家桶）
+
+这是你找实习/工作的“核心武器”。
+
+✔ Spring / Spring Boot
+
+必须掌握：
+
+① IOC / DI
+Bean生命周期
+循环依赖（重点）
+② AOP
+动态代理（JDK / CGLIB）
+事务本质（@Transactional原理）
+③ Spring MVC
+请求流程
+DispatcherServlet
+✔ Spring Boot工程化
+自动配置原理
+starter机制
+配置加载顺序
+4️⃣ 第四层：高性能中间件（后端分水岭）
+✔ Redis（必须精通）
+数据结构（String/Hash/Zset）
+缓存穿透 / 雪崩 / 击穿
+分布式锁
+持久化（RDB / AOF）
+✔ MQ（消息队列）
+Kafka 或 RabbitMQ
+消息可靠性（重试 / ACK）
+消费幂等性
+✔ 其他常见组件
+Nginx（反向代理 / 负载均衡）
+Elasticsearch（搜索）
+5️⃣ 第五层：系统设计（决定你能不能进好公司）
+
+必须会分析这些问题：
+
+✔ 核心能力
+高并发系统设计
+缓存架构设计
+秒杀系统（经典面试题）
+分布式一致性（CAP / BASE）
+✔ 微服务
+Spring Cloud / Dubbo（至少懂一个）
+服务注册与发现
+熔断 / 限流 / 降级
+6️⃣ 第六层：AI应用后端（你的差异化方向🔥）
+
+这是你和普通后端的区别点。
+
+✔ 必须掌握
+① LLM调用
+OpenAI / 通义 / Claude API
+prompt设计基础
+function calling
+② RAG架构（重点）
+文档切分（chunking）
+向量化 embedding
+向量数据库（Milvus / FAISS / pgvector）
+③ AI工程化
+流式输出（SSE / WebSocket）
+Token控制与成本优化
+多模型路由
+④ AI + 后端融合项目
+
+比如：
+
+AI客服系统
+智能问答系统
+企业知识库检索系统
+📌 学习优先级（非常关键）
+
+如果你按一年规划：
+
+🥇 第一阶段（0-3个月）
+Java基础 + JVM + 并发
+MySQL + SQL优化
+Spring Boot
+🥈 第二阶段（3-6个月）
+Redis + MQ
+项目（一定要做）
+🥉 第三阶段（6-9个月）
+系统设计 + 分布式
+高并发项目（秒杀/电商）
+🚀 第四阶段（9-12个月）
+AI应用后端（RAG + LLM）
+做2个AI项目
