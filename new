@@ -1,0 +1,263 @@
+
+##CTE结构
+一、CTE 是什么？
+
+CTE = Common Table Expression（公共表表达式）
+
+本质就是：
+
+给一段查询起个名字，当作临时表用
+
+语法：
+
+WITH 表名 AS (
+    查询语句
+)
+SELECT * FROM 表名;
+👉 举个最简单例子
+WITH temp AS (
+    SELECT num FROM Numbers WHERE num <= 10
+)
+SELECT * FROM temp;
+
+你可以理解为：
+
+👉 先定义一个“临时表 temp”
+👉 再从 temp 里查数据
+
+👉 和子查询的区别
+
+你可能会问：这不就是子查询吗？
+
+确实类似，但 CTE 更强：
+
+对比	子查询	CTE
+可读性	差	强
+能复用	❌	✅
+支持递归	❌	✅（重点）
+二、递归 CTE（重点）
+
+这才是考试/面试的核心。
+
+👉 为什么需要递归？
+
+比如这个表：
+
+departments
+------------------------
+id | parent_id | name
+1  | NULL      | 总公司
+2  | 1         | 研发部
+3  | 2         | 后端组
+4  | 2         | 前端组
+
+你要查：
+
+“研发部的所有下级部门”
+
+👉 这就是树结构查询
+
+普通 SQL 很难写
+👉 这时候就用 递归 CTE
+
+三、递归 CTE 标准结构（必须背）
+WITH RECURSIVE cte AS (
+
+    -- ① 锚点（起点）
+    SELECT * 
+    FROM departments 
+    WHERE name = '研发部'
+
+    UNION ALL
+
+    -- ② 递归部分（不断找子节点）
+    SELECT d.*
+    FROM departments d
+    JOIN cte ON d.parent_id = cte.id
+
+)
+SELECT * FROM cte;
+四、把它“翻译成人话”
+① 锚点（Anchor）
+SELECT * FROM departments WHERE name = '研发部'
+
+👉 找起点（根节点）
+
+② 递归部分（Recursive）
+SELECT d.*
+FROM departments d
+JOIN cte ON d.parent_id = cte.id
+
+👉 意思是：
+
+找“当前节点的子节点”
+
+③ UNION ALL（关键）
+
+把两部分连起来：
+
+👉 初始节点 + 不断扩展
+
+👉 执行过程（非常重要）
+
+数据库实际在做：
+
+先找到：研发部
+再找：研发部的子部门
+再找：子部门的子部门
+一直找，直到没有为止
+
+👉 自动递归！
+
+六、几个高频误区（考试必考）
+❌ 误区1：需要写终止条件
+
+不需要！
+
+👉 没有子节点自然停止
+
+❌ 误区2：必须有 LEVEL
+
+不是必须
+
+👉 只是辅助字段
+
+❌ 误区3：ORDER BY 很重要
+
+不重要
+
+👉 只影响顺序
+
+七、一句话记忆
+
+递归 CTE = 锚点 + UNION ALL + 自连接
+
+少一个就废。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
