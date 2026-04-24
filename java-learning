@@ -47,6 +47,45 @@ super()：调用父类构造
 
 
 
+##集合
+
+
+TreeSet 中元素不可以为 null
+👉 深层原因：
+TreeSet 依赖 比较（compareTo / Comparator）
+null 无法比较 → NPE
+
+TreeSet->红黑树->中序遍历
+
+TreeSet 排序依赖：
+
+Comparable
+或
+Comparator
+
+
+ArrayList 的底层是动态数组
+
+
+HashSet 去重依赖 hashCode + equals 的联合判断
+
+HashSet 底层是 HashMap
+add() 时：
+1. 调用对象的 hashCode() → 定位桶
+2. 如果桶为空 → 直接放入
+3. 如果不为空 → 用 equals() 比较
+   - true → 认为重复，不插入
+   - false → 插入（链表/红黑树）
+
+必须重写：
+hashCode()
+equals()
+
+集合遍历时删除数据：list.removeIf(s -> "B".equals(s));
+
+
+HashSet去重->重写HashCode()和equals()
+TreeSet去重->重写CompareTo(),因为TreeSet👉 ❗ 不看 equals！不看 hashCode！
 
 
 
@@ -54,12 +93,14 @@ super()：调用父类构造
 
 
 
+fail-fast：
+集合有：modCount
+迭代器有：expectedModCount
+每次 next():
+检查 modCount == expectedModCount ?
+不等 → 抛 ConcurrentModificationException
 
-
-
-
-
-
-
-
-
+it.remove() 会：
+1. 修改集合 → modCount++
+2. 同时更新 expectedModCount
+(两个值同时更新)
