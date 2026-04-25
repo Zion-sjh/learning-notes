@@ -57,6 +57,8 @@ null 无法比较 → NPE
 
 TreeSet->红黑树->中序遍历
 
+TreeSet 不会覆盖，而是直接拒绝插入
+
 TreeSet 排序依赖：
 
 Comparable
