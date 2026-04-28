@@ -37,20 +37,39 @@
 
 
 
+##Connection
+表示与数据库的一次连接（会话）
+用于：
+创建 Statement
+控制事务（commit / rollback）
+
+ResultSet
+用于封装查询结果（类似一个表）
+以游标（cursor）方式逐行读取
 
 
 
+##PreparedStatement vs Statement:
+1️⃣ 执行机制
+Statement：每次都要 解析 + 编译 + 执行 SQL
+PreparedStatement：
+SQL 只编译一次
+后续只传参数执行
+
+2️⃣ 性能
+PreparedStatement 在多次执行相同 SQL时更快
+
+3️⃣安全性（重点）
+👉 防 SQL 注入原理：
+PreparedStatement 将 SQL 结构和参数分离，参数不会参与 SQL 解析
 
 
-
-
-
-
-
-
-
-
-
+##为什么用 while(rs.next())？
+ResultSet 内部有一个游标（cursor）
+初始位置：第一行之前
+调用 rs.next()：
+移动到下一行
+返回是否有数据（true / false）
 
 
 
